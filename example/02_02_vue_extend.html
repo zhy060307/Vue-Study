@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.extend构造器的延伸</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>Vue.extend构造器的延伸</h1>
+<hr/>
+<div id="mount-point"></div>
+<author></author>
+<script type="text/javascript">
+    let Author = Vue.extend({
+        template: '<p><a :href="authorUrl">{{authorName}}</a></p>',
+        data: function () {
+            return {
+                authorName: 'zhy',
+                authorUrl: 'http://forevercoder.com/'
+            }
+        }
+    })
+    new Author().$mount('author')
+    new Author().$mount('#mount-point')
+</script>
+</body>
+</html>

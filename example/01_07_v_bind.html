@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind实例</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>v-bind实例</h1>
+<hr/>
+<div id="app">
+    <h4>v-bind:src</h4>
+    <img v-bind:src="imageSrc" width="200px">
+    <p><a :href="webUrl" target="_blank">百度</a></p>
+    <hr/>
+
+    <h4>v-bind:css</h4>
+    <div :class="className">1、绑定ClassA</div>
+    <div :class="{classA:isOk}">2、绑定Class中的判断</div>
+    <div>
+        <input type="checkbox" v-model="isOk" id="isOk">
+        <label for="isOk">使用ClassA样式</label>
+    </div>
+    <div :class="[classA,classB]">3、绑定ClassA,ClassB</div>
+    <div :class="isOk?classA:classB">4、三元运算符</div>
+    <div :style="{color:styleColor,fontFamily: styleFontFamily}">5、绑定Style</div>
+    <div :style="styleObject">6、绑定StyleObject</div>
+    <hr/>
+
+</div>
+<script type="text/javascript">
+    var vue = new Vue({
+        el: '#app',
+        data: {
+            webUrl: 'http://www.baidu.com',
+            imageSrc: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524302878433&di=3d1a79fed4b310bc4ff6e8f7f03f79ec&imgtype=0&src=http%3A%2F%2Fstatic.jysq.net%2Fdata%2Fattachment%2Falbum%2F201803%2F18%2F093928w9z2a363831h2p1a.jpg',
+            className: 'classA',
+            isOk: true,
+            classA: 'classA',
+            classB: 'classB',
+            styleColor: 'green',
+            styleFontFamily: '.SF NS Display',
+            styleObject: {
+                color: 'blue',
+                fontFamily: '.SF NS Display'
+            }
+        }
+    })
+</script>
+
+<style type="text/css">
+    .classA {
+        color: red;
+    }
+
+    .classB {
+        font-size: 3em;
+    }
+
+</style>
+</body>
+</html>

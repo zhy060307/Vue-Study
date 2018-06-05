@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Component1</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>Vue Component1</h1>
+<hr/>
+
+<h2>app1</h2>
+<div id="app">
+    {{message}}
+    <zhy></zhy>
+    <zhy001></zhy001>
+</div>
+
+<hr>
+<h2>app2</h2>
+<div id="app2">
+    <zhy></zhy>
+    <zhy001></zhy001>
+</div>
+
+<script type="text/javascript">
+
+
+    Vue.component('zhy', {
+        template: `<h2 style="color: green">我是一个全局组件</h2>`
+    })
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'hello'
+        },
+        components: {
+            "zhy001": {
+                template: `<h2 style="color: red">我是一个局部组件</h2>`
+            }
+        }
+    })
+
+    new Vue({
+        el: '#app2'
+    })
+
+</script>
+</body>
+</html>

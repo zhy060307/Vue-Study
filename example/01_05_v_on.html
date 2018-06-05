@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>计分器</h1>
+<hr/>
+
+<div id="app">
+    当前的分数是：{{score}}<br/>
+    <button v-on:click="plus">加分</button>
+    <button @click="minus">减分</button>
+    <br>
+    <input type="text" v-on:keyup.enter="onEnter" v-model="step">
+
+</div>
+<script type="text/javascript">
+    var vue = new Vue({
+        el: '#app',
+        data: {
+            score: 0,
+            step: 1
+        },
+        methods: {
+            plus: function () {
+                this.score++;
+
+            },
+            minus: function () {
+                this.score--;
+            },
+            onEnter: function () {
+                this.score += parseInt(this.step);
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Component 父子组件关系</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>Component 父子组件关系</h1>
+<hr/>
+<div id="blog-post-demo">
+    <blog-post
+            v-for="post in posts"
+            v-bind:key="post.id"
+            v-bind:title="post.title"
+            v-bind:post="post"
+
+
+    ></blog-post>
+</div>
+
+
+<script type="text/javascript">
+
+
+    Vue.component('blog-post', {
+        props: ['title','post'],
+        template: `<div>
+                        <h3>{{title}}</h3>
+                        <div v-html="post.content"></div>
+                    </div>`
+    })
+
+    new Vue({
+        el: '#blog-post-demo',
+        data: {
+            posts: [
+                {
+                    id: 1,
+                    title: 'My journey with Vue',
+                    content: '<span style="color: green;font-size: large">Vue is very nice.</span>'
+                },
+                {
+                    id: 2,
+                    title: 'Blogging with Vue',
+                    content: '<span style="color: blue;font-size: medium">Vue is very nice. + 1!</span>'
+                },
+                {
+                    id: 3,
+                    title: 'Why Vue is so fun',
+                    content: '<span style="color: red;font-size: small">Vue is very nice. + 2! </span>'
+                },
+            ]
+        }
+    })
+
+</script>
+</body>
+</html>

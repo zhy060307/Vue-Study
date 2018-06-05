@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.set 响应式新增与修改数据</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>Vue.set 响应式新增与修改数据</h1>
+<hr/>
+<div id="app">
+    <p v-for="item in items" :key="item.id">
+        {{item.name}}今年{{item.age}}岁
+    </p>
+
+    <button @click="btn1Click">修改老大年龄</button>
+    <button @click="btn2Click">添加老N</button>
+</div>
+
+<script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            items: [{"id": 1, "name": "老大", "age": 38},
+                {"id": 2, "name": "老二", "age": 28},
+                {"id": 3, "name": "老三", "age": 18},
+            ]
+        },
+        methods: {
+            btn1Click: function () {
+                // this.items[0]={"id": 1, "name": "老大", "age": 388}
+
+                Vue.set(this.items, 0, {"id": 1, "name": "老大", "age": 388})
+            },
+            btn2Click: function () {
+                // this.items[0]={"id": 1, "name": "老大", "age": 388}
+
+                let length = this.items.length;
+                Vue.set(this.items, length, {"id": (length + 1), "name": "老" + (length + 1), "age": (length + 1)})
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-model数据源绑定</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>v-model数据源绑定</h1>
+<hr/>
+<div id="app">
+    <p>{{message}}</p>
+    <p><input type="text" v-model="message"></p>
+    <p>v-model.lazy <input type="text" v-model.lazy="msgLazy">{{msgLazy}}</p>
+    <p>v-model.number <input type="text" v-model.number="msgNumber">{{msgNumber}}</p>
+    <p>v-model.trim <input type="text" v-model.number="msgTrim">{{msgTrim}}</p>
+    <hr/>
+    <h3>文本区域加入数据绑定</h3>
+    <textarea cols="30" rows="10" v-model="message"></textarea>
+    <hr/>
+    <h3>单选按钮绑定</h3>
+    <input type="radio" id="man" value="男" v-model="sex"/>
+    <label for="man">男</label>
+
+    <input type="radio" id="woman" value="女" v-model="sex"/>
+    <label for="man">女</label>
+    <p v-text="sex"></p>
+    <hr/>
+    <h3>多选按钮绑定一个值</h3>
+    <input type="checkbox" id="isChecked" v-model="isChecked"/>
+    <label for="isChecked">{{isChecked}}</label>
+    <hr/>
+    <h3>多选按钮绑定多个值</h3>
+        <input type="checkbox" id="1" value="Java" v-model="courses"/>
+        <label for="1">Java</label>
+
+        <input type="checkbox" id="2" value="C" v-model="courses"/>
+        <label for="2">C</label>
+
+        <input type="checkbox" id="3" value="C++" v-model="courses"/>
+        <label for="3">C++</label>
+        <p v-text="courses"></p>
+</div>
+<script type="text/javascript">
+    var vue = new Vue({
+        el: '#app',
+        data: {
+            message: 'hello world',
+            msgLazy: 'hello world',
+            msgNumber: 1,
+            msgTrim: 1,
+            isChecked: false,
+            courses: [],
+            sex:''
+        }
+    })
+</script>
+</body>
+</html>
